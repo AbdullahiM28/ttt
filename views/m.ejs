@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <script>
+      const ROOM_ID = "<%= roomId %>"
+    </script>
+    
+    <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script defer src="script.js"></script> 
+    <title>Tic Tac Toe</title>
+    <style>
+      h1 {
+    text-align: center;
+  }
+  td {
+    width: 2em;
+    height: 2em;
+  }
+  table {
+    margin: 5px auto;
+  }
+  .vert {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+  }
+  .hori {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+  }
+  #start {
+    text-decoration: none;
+    position: relative;
+    border: none;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    color: #fff;
+    width: 9em;
+    height: 3em;
+    line-height: 2em;
+    text-align: center;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 100%;
+    border-radius: 30px;
+    z-index: 1;
+  }
+  
+  #start:hover {
+    animation: ani 8s linear infinite;
+    border: none;
+  }
+
+  @keyframes ani {
+    0% {
+      background-position: 0%;
+    }
+  
+    100% {
+      background-position: 400%;
+    }
+  }
+  
+  #start:before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    background-color: #33344f;
+    background-size: 400%;
+    border-radius: 35px;
+    transition: 1s;
+  }
+  
+  #start:hover::before {
+    filter: blur(20px);
+  }
+  
+  #start:active {
+    background: linear-gradient(32deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  }
+
+  /* this is the div the holds the start button */
+  #cen { 
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+  }
+
+  .but {
+    text-decoration: none;
+    position: relative;
+    border: none;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    color: black;
+    width: 9em;
+    height: 9em;
+    line-height: 2em;
+    text-align: center;
+    background: white;
+    background-size: 100%;
+    
+  }
+
+  td {
+    text-align: center;
+    font-size: 50px;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;;
+  }
+    </style>
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+    <table id="board">
+      <tr>
+        <td id="1">
+        </td>
+        <td id="2" class="vert">
+        </td>
+        <td id="3">
+        </td>
+      </tr>
+      <tr>
+        <td id="4" class="hori"> 
+      </td>
+        <td id="5" class="vert hori">
+        </td>
+        <td id="6" class="hori">
+        </td>
+      </tr>
+      <tr>
+        <td id="7">
+        </td>
+        <td id="8" class="vert">
+        </td>
+        <td id="9">
+        </td>
+      </tr>
+    </table>
+    
+    <div id="cen">
+    <!-- This is where I'll put the NEW GAME button when the game ends-->
+    </div>
+</body>
+</html>
